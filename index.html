@@ -1,23 +1,987 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
+
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://www.asanmove.co.kr/#website",
+        "url": "https://www.asanmove.co.kr",
+        "name": "대한민국 인터넷강의 종합 플랫폼",
+        "description": "2026년 기준 전국 인터넷강의 브랜드 비교 및 연령별 맞춤 추천 요금 산정 시스템 제공",
+        "publisher": {
+          "@id": "https://www.asanmove.co.kr/#organization"
+        }
+      },
+      {
+        "@type": "EducationalOrganization",
+        "@id": "https://www.asanmove.co.kr/#organization",
+        "name": "인터넷강의 통합 비교 솔루션",
+        "url": "https://www.asanmove.co.kr",
+        "logo": "https://www.asanmove.co.kr/logo.png",
+        "sameAs": [
+          "https://namu.wiki/w/%EC%9D%B8%ED%84%B0%EB%84%B7%20%EA%B0%95%EC%9D%98",
+          "https://www.moe.go.kr"
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://www.asanmove.co.kr/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "2026년 기준 전국 인터넷강의 평균 비용은 얼마인가요?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "연령 및 과목 종류에 따라 가격 편차가 큽니다. 초등 및 중등 온라인 강의 패스는 월평균 10만 원에서 15만 원 선이며, 고등 수능 및 내신 전문 브랜드 패스는 연간 40만 원에서 100만 원 내외의 요금 체계를 보입니다. 성인 직장인 대상 코딩 및 공무원 자격증 전문 사이트의 경우 환급형 이벤트를 활용하면 실질 예상 비용을 크게 낮출 수 있습니다."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "인강 가입 시 사은품이나 현금지원 혜택을 받는 방법이 있나요?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "신규 가입 시 제공되는 기기 결합 상품권, 학용품 패키지, 또는 환급 이벤트가 대표적입니다. 다이렉트 상담을 통해 장기 수강 약정을 맺을 경우 태블릿 PC 지원금이나 전용 어플 이용 할인권 등의 프로모션 혜택을 추가로 확보할 수 있어 싼곳을 찾는 소비자들에게 유리합니다."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "AI 및 챗지피티 기술이 인터넷강의에 어떻게 적용되고 있나요?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "최신 에듀테크 플랫폼들은 제미나이 및 챗지피티 기반의 인공지능 튜터를 연동하고 있습니다. 실시간 질문 답변 서비스, 맞춤형 진도 관리 앱, 그리고 취약점 분석 알고리즘을 통해 기존 일방향 강의의 단점을 보완하고 양방향 컨설팅을 실현하고 있습니다."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --primary-color: #0f172a;
+      --secondary-color: #0284c7;
+      --accent-color: #f59e0b;
+      --bg-light: #f8fafc;
+      --bg-white: #ffffff;
+      --text-dark: #1e293b;
+      --text-muted: #64748b;
+      --border-color: #e2e8f0;
+      --soft-teal: #f0fdfa;
+      --soft-rose: #fff1f2;
+      --soft-amber: #fffbeb;
+    }
+
+    body {
+      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.8;
+      color: var(--text-dark);
+      background-color: var(--bg-light);
+      word-break: keep-all;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--primary-color) 0%, #1e293b 100%);
+      color: #ffffff;
+      padding: 50px 20px;
+      text-align: center;
+      border-bottom: 5px solid var(--secondary-color);
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin: 0 0 15px 0;
+      letter-spacing: -0.05em;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      color: #94a3b8;
+      max-width: 800px;
+      margin: 0 auto 30px auto;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
+    nav a {
+      color: #f1f5f9;
+      text-decoration: none;
+      padding: 10px 20px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: background 0.3s ease;
+    }
+
+    nav a:hover {
+      background-color: var(--secondary-color);
+    }
+
+    .cta-container {
+      margin-top: 25px;
+    }
+
+    .cta-btn {
+      background-color: var(--accent-color);
+      color: #0f172a;
+      padding: 15px 40px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.1rem;
+      border-radius: 8px;
+      display: inline-block;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s, background-color 0.2s;
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-2px);
+      background-color: #d97706;
+    }
+
+    main {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    section {
+      background: var(--bg-white);
+      border-radius: 16px;
+      padding: 40px;
+      margin-bottom: 40px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+      border: 1px solid var(--border-color);
+    }
+
+    h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      margin-top: 0;
+      margin-bottom: 25px;
+      border-left: 6px solid var(--secondary-color);
+      padding-left: 15px;
+      letter-spacing: -0.03em;
+    }
+
+    h3 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: #0f172a;
+      margin-top: 30px;
+      margin-bottom: 15px;
+    }
+
+    p {
+      margin-top: 0;
+      margin-bottom: 20px;
+      color: #334155;
+    }
+
+    .highlight-box {
+      background-color: var(--soft-teal);
+      border-left: 4px solid var(--secondary-color);
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 25px;
+    }
+
+    .danger-box {
+      background-color: var(--soft-rose);
+      border-left: 4px solid #f43f5e;
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 25px;
+    }
+
+    .warning-box {
+      background-color: var(--soft-amber);
+      border-left: 4px solid var(--accent-color);
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 25px;
+    }
+
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+      margin-top: 25px;
+    }
+
+    .card {
+      background: var(--bg-white);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 25px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 25px 0;
+      font-size: 0.95rem;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f1f5f9;
+      color: var(--primary-color);
+      font-weight: 700;
+      padding: 15px;
+      border-bottom: 2px solid var(--border-color);
+    }
+
+    td {
+      padding: 15px;
+      border-bottom: 1px solid var(--border-color);
+      color: #475569;
+    }
+
+    tr:hover {
+      background-color: #f8fafc;
+    }
+
+    .form-container {
+      background-color: #f8fafc;
+      padding: 35px;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--primary-color);
+    }
+
+    input[type="text"],
+    input[type="number"],
+    input[type="tel"],
+    select {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      box-sizing: border-box;
+      font-size: 1rem;
+      background-color: var(--bg-white);
+      transition: border-color 0.2s;
+    }
+
+    input[type="text"]:focus,
+    input[type="number"]:focus,
+    select:focus {
+      border-color: var(--secondary-color);
+      outline: none;
+    }
+
+    .checkbox-group {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .checkbox-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    button.submit-btn {
+      background-color: var(--secondary-color);
+      color: #ffffff;
+      border: none;
+      padding: 15px 30px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      border-radius: 6px;
+      cursor: pointer;
+      width: 100%;
+      transition: background-color 0.2s;
+    }
+
+    button.submit-btn:hover {
+      background-color: #0369a1;
+    }
+
+    .calc-result {
+      margin-top: 25px;
+      padding: 20px;
+      background-color: var(--soft-teal);
+      border-radius: 8px;
+      display: none;
+    }
+
+    .tag-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 15px;
+    }
+
+    .tag {
+      background-color: #e2e8f0;
+      color: #475569;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    .external-links {
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .external-links a {
+      color: var(--secondary-color);
+      text-decoration: underline;
+      margin-right: 20px;
+      font-weight: 600;
+    }
+
+    footer {
+      background-color: var(--primary-color);
+      color: #94a3b8;
+      text-align: center;
+      padding: 40px 20px;
+      font-size: 0.9rem;
+      border-top: 4px solid var(--secondary-color);
+    }
+
+    footer p {
+      color: #64748b;
+      margin: 5px 0;
+    }
+
+    footer a {
+      color: #94a3b8;
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 1.8rem;
+      }
+      section {
+        padding: 25px 15px;
+      }
+      th, td {
+        padding: 10px;
+        font-size: 0.85rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>인터넷강의 최적화 선택 솔루션</h1>
+    <p>2026년 대한민국 초중고 수능 및 성인 자격증 어학 인강 비교 가이드와 최적의 교육비 맞춤 견적 시스템</p>
+    <div class="cta-container">
+      <a href="#calculator" class="cta-btn">인강 요금 계산 및 추천 받기</a>
+    </div>
     <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
+      <a href="#intro">에듀테크 동향</a>
+      <a href="#age-analysis">연령별 추천</a>
+      <a href="#regional-info">지역별 현황</a>
+      <a href="#brand-comparison">브랜드 비교</a>
+      <a href="#calculator">수강료 계산기</a>
+      <a href="#learning-diagnosis">성향 진단</a>
+      <a href="#community-sentiment">수강 후기</a>
+      <a href="#faq-section">자주 묻는 질문</a>
     </nav>
-    <main>
-      <h1>Home page</h1>
-    </main>
-  </body>
-</html>
+  </header>
+
+  <main>
+    <section id="intro">
+      <h2>2026년 대한민국 인터넷강의 시장의 변화와 전망</h2>
+      <p>
+        최근 대한민국 에듀테크 생태계는 생성형 인공지능 기술의 대중화와 고성능 모바일 기기의 보급으로 전례 없는 전환점을 맞이하고 있습니다. 과거 일방적으로 비디오 영상을 전송하던 방식에서 벗어나, 이제는 개별 학습자의 진도를 분석하여 적절한 피드백을 실시간으로 주는 지능형 커리큘럼이 필수가 되었습니다. 이에 따라 많은 학습자가 자신의 환경에 맞는 전문 업체를 비교 분석하여 교육비를 합리적으로 도출하고자 합니다.
+      </p>
+      <div class="highlight-box">
+        <h3>디지털 인공지능 융합 학습의 보편화</h3>
+        <p>
+          2026년에 이른 현재, 챗지피티 및 제미나이 등의 대규모 언어 모델을 접목한 인공지능 학습 비서가 다수의 인강 브랜드에 도입되었습니다. 이를 통해 학생들은 수업 중 궁금한 사항을 즉각 해결하고 정밀한 모의고사 오답 분석 지도를 실시간으로 받는 혜택을 누리게 되었습니다. 이러한 어플리케이션 기반 연동은 시공간을 초월한 비대면 학습의 가장 큰 단점으로 제기되던 집중도 저하와 철저한 관리 부족을 메우는 대안으로 떠올랐습니다.
+        </p>
+      </div>
+      <p>
+        교육 요금 또한 고정적인 월정액 방식에서 수강생의 수강량과 필요 기능에 따라 차별적으로 지출하는 다이렉트 정산 모델이 점차 인기를 얻고 있습니다. 신규 플랫폼 간 경쟁이 치열해지며 입문자를 유치하기 위해 가입 사은품 증정 및 단기 프로모션 지원금 지급, 백화점 상품권 증정 등의 다양한 혜택과 이벤트가 빈번하게 이루어지므로, 현명한 선택을 위해 정교한 교육 설계와 견적 비교가 권장됩니다.
+      </p>
+    </section>
+
+    <section id="age-analysis">
+      <h2>연령대별 학습 목적 및 최적의 인터넷강의 분석</h2>
+      <p>
+        학습자의 발달 상황과 목적에 맞춰 알맞은 강의 방식을 지정하는 것은 불필요한 지출을 방지하고 교육 효과를 극대화하는 시작점입니다. 유아 및 초등 시기부터 액티브 시니어 단계에 이르기까지 목표에 부합하는 설계 방식을 소개합니다.
+      </p>
+      
+      <div class="grid-container">
+        <div class="card">
+          <h3>초등 및 중등 학생 그룹</h3>
+          <p>
+            초등 및 중등 온라인 교육은 무엇보다 흥미를 붙이고 올바른 공부 습관을 형성하는 데 맞추어져야 합니다. 시각적으로 흥미를 끄는 멀티미디어 교구와 학부모 전용 관리 앱 연동이 우수한 브랜드를 추천합니다. 평균적인 교육 요금은 기기 약정 조건에 따라 결정되는 경향이 짙습니다.
+          </p>
+          <div class="tag-container">
+            <span class="tag">자기주도학습</span>
+            <span class="tag">태블릿 결합</span>
+            <span class="tag">월정액 요금</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>10대 고등 및 수능 수험생</h3>
+          <p>
+            내신 관리와 더불어 수능이라는 일생의 전환기를 앞둔 시기입니다. 1타 강사 라인업을 다수 보유한 전문 일타 사이트의 올패스 혹은 프리패스 상품권 형태의 종합 이용권이 인기가 높습니다. 매년 초 혹은 학년 말 신규 수강 등록 시기에 제공되는 다양한 교재 쿠폰 혜택과 환급형 장학금 프로그램을 노리는 것이 유리합니다.
+          </p>
+          <div class="tag-container">
+            <span class="tag">수능 올패스</span>
+            <span class="tag">환급 제도</span>
+            <span class="tag">교재 할인권</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>20대 대학생 및 취업준비생</h3>
+          <p>
+            토익, 오픽 등 외국어 스펙 달성 및 각종 기사, 컴퓨터활용능력 등의 국가 공인 자격증 획득을 주된 목적으로 삼습니다. 비교적 싼곳을 찾으려는 성향이 짙어, 환급 비율이 우수하고 모바일 기기에서도 원활하게 구동되는 어플 기반 인강 업체를 주로 선택합니다. 취업 커뮤니티의 내돈내산 추천 경로를 활용한 공동 구매도 두드러집니다.
+          </p>
+          <div class="tag-container">
+            <span class="tag">취업 스펙</span>
+            <span class="tag">단기 마스터</span>
+            <span class="tag">모바일 강의</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid-container" style="margin-top: 25px;">
+        <div class="card">
+          <h3>30대 및 40대 직장인 자기계발</h3>
+          <p>
+            이직을 위한 프로그래밍 코딩 실무 교육, 공인중개사 자격시험 준비, 그리고 업무 역량 개발을 도모하는 비즈니스 실무 위주로 포진되어 있습니다. 출퇴근 시간 대중교통 안에서 유튜브나 태블릿을 활용해 부담 없이 습득할 수 있는 짧은 분량의 마이크로 러닝 시스템이 높은 선호도를 자랑합니다.
+          </p>
+          <div class="tag-container">
+            <span class="tag">코딩 실무</span>
+            <span class="tag">재테크 및 커리어</span>
+            <span class="tag">자투리 시간 활용</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>50대 및 60대 이상 은퇴 대비 그룹</h3>
+          <p>
+            제2의 인생 이모작을 앞두고 조경기능사, 주택관리사, 또는 한식조리기능사 등 기술형 면허 및 은퇴 설계 인강을 다각도로 조회하는 편입니다. 글자 크기를 조절할 수 있는 전용 전자기기와 상세한 일대일 유선 고객센터 상담 컨설팅망이 탄탄하게 완비된 노후 특화 브랜드를 이용하는 편이 효율적입니다.
+          </p>
+          <div class="tag-container">
+            <span class="tag">노후 대비 기술</span>
+            <span class="tag">일대일 유선 관리</span>
+            <span class="tag">시니어 전용 교재</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="regional-info">
+      <h2>전국 지역별 인터넷강의 인프라 및 온라인 수요 비교</h2>
+      <p>
+        오프라인의 유명 강남 및 대치동 대형 학원가는 주로 서울, 경기, 인천 등의 수도권 핵심 주거 단지에 집중되어 있어, 물리적 제약이 큰 지방 지역일수록 오히려 고품질 인터넷강의에 의존하는 경향이 뚜렷하게 관측됩니다.
+      </p>
+      
+      <div class="warning-box">
+        <h3>지방 교육 격차 극복의 열쇠, 초고속 온라인 인강</h3>
+        <p>
+          부산, 대구, 대전, 광주, 울산, 세종과 같은 지방 광역도시는 물론이고 강원, 충북, 충남, 전북, 전남, 경북, 경남, 그리고 제주 도서 지역에 이르기까지 전국 전역에서 디지털 격차를 보완해 주는 장치로서의 역할이 날로 중요해지고 있습니다. 물리적인 접근성이 열악한 면 단위 거주 학생들도 최고 수준의 수업을 안방에서 동일한 가격으로 들을 수 있어, 장기적 비용을 산정했을 때 오프라인 학원 통학 버스 이용료나 기숙사 이용 금액 대비 막대한 재정적 이점을 선사합니다.
+        </p>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>권역 분류</th>
+            <th>주요 분석 대상 지역</th>
+            <th>지배적 수강 목표</th>
+            <th>평균 선호 상품군</th>
+            <th>평균 지출 예산 범위 (연간)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>수도권</td>
+            <td>서울, 경기, 인천</td>
+            <td>강남권 학원 보완, 맞춤형 AI 내신 분석</td>
+            <td>대형 입시 브랜드 패스, 논술 첨삭권</td>
+            <td>70만 원에서 120만 원 내외</td>
+          </tr>
+          <tr>
+            <td>중부권</td>
+            <td>대전, 세종, 충북, 충남, 강원</td>
+            <td>국가 공무원 시험 대비, 수능 수험 공부</td>
+            <td>환급형 장기 자유이용권, 공무원 수강 패키지</td>
+            <td>50만 원에서 90만 원 내외</td>
+          </tr>
+          <tr>
+            <td>호남권</td>
+            <td>광주, 전북, 전남</td>
+            <td>전문 자격증 단기 취득, 고등 내신 최적화</td>
+            <td>자격증 전 과목 마스터 팩, 내신 집중 교재 결합형</td>
+            <td>40만 원에서 80만 원 내외</td>
+          </tr>
+          <tr>
+            <td>영남권</td>
+            <td>부산, 대구, 울산, 경북, 경남</td>
+            <td>외국어 어학 시험 실전, 고등 입시 수능</td>
+            <td>어학 고득점 달성 환급 패스, 수능 영역별 단과 상품</td>
+            <td>50만 원에서 100만 원 내외</td>
+          </tr>
+          <tr>
+            <td>도서권</td>
+            <td>제주, 기타 도서 지역</td>
+            <td>전 과목 기초 학력 향상, 평생 교육 취미</td>
+            <td>무제한 종합 수강권, 기기 무상 제공 결합 요금</td>
+            <td>30만 원에서 70만 원 내외</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="brand-comparison">
+      <h2>국내 주요 인터넷강의 브랜드별 특징 및 장단점 비교</h2>
+      <p>
+        어떤 업체를 고르느냐에 따라 강의 스타일, 지원 기기, 사후 관리 측면에서 눈에 띄는 차이점이 존재합니다. 다음은 국내 시장을 주도하고 있는 세 가지 유형의 교육 서비스 비교입니다.
+      </p>
+
+      <div class="grid-container">
+        <div class="card">
+          <h3>수능/내신 전통 대형 브랜드</h3>
+          <p><strong>주요 특징:</strong> 스타 강사진의 오랜 노하우와 확실한 기출 분석력이 내재된 전통 명가입니다.</p>
+          <div class="highlight-box">
+            <p><strong>장점:</strong> 교재의 높은 퀄리티와 축적된 빅데이터 기반 수능 적중률이 극히 우수합니다.</p>
+          </div>
+          <div class="danger-box">
+            <p><strong>단점:</strong> 다른 채널에 비해 상대적으로 신규 가입 혜택이 단조롭고 개별 학생에 대한 아주 세심한 튜터링은 부족할 수 있습니다.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>에듀테크 기반 AI 구독형 브랜드</h3>
+          <p><strong>주요 특징:</strong> 챗지피티와 같은 고급 AI 학습 모듈을 자체 앱에 장착하여 24시간 실시간 맞춤 학습을 제안합니다.</p>
+          <div class="highlight-box">
+            <p><strong>장점:</strong> 취약 문제 유형만 추려 정밀 분석해 주는 자동 진단 프로그램을 저렴한 월 요금으로 경험할 수 있습니다.</p>
+          </div>
+          <div class="danger-box">
+            <p><strong>단점:</strong> 일타 강사처럼 대중을 휘어잡는 화려한 말솜씨 위주의 흡입력이 다소 약해 초기 몰입이 요구됩니다.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>자격증/실무 맞춤 특화 브랜드</h3>
+          <p><strong>주요 특징:</strong> 직장인과 성인들이 실무에 바로 쓸 수 있는 전문 프로그램을 기획해 다이렉트로 가입을 유도합니다.</p>
+          <div class="highlight-box">
+            <p><strong>장점:</strong> 시험 합격 시 제세공과금을 제외한 수강료 전액을 돌려받는 강력한 현금지원 환급 이벤트가 활성화되어 있습니다.</p>
+          </div>
+          <div class="danger-box">
+            <p><strong>단점:</strong> 환급 요건을 통과하기 위한 출석 일수 및 시험 합격 증빙 기준이 매우 까다로워 중도 하차율이 존재합니다.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="calculator">
+      <h2>인터넷강의 개인화 교육비 예상 견적 및 요금 계산기</h2>
+      <p>
+        선택하시는 수강 목적, 거주 지역, 학습 기간 및 모바일 기기 결합 여부에 따라서 실제 예상되는 대략적인 금액과 최적의 절약 혜택을 시뮬레이션해 보실 수 있습니다. 아래의 정보 입력란에 실제 상황을 대입해 보십시오.
+      </p>
+      
+      <div class="form-container">
+        <form id="quoteForm" onsubmit="calculateQuote(event)">
+          <div class="form-group">
+            <label for="learnerName">학습자 성함 (또는 닉네임)</label>
+            <input type="text" id="learnerName" placeholder="예: 홍길동" required>
+          </div>
+
+          <div class="form-group">
+            <label for="learnerAge">학습자 연령 및 대상군</label>
+            <select id="learnerAge" required>
+              <option value="">-- 연령대를 선택해 주세요 --</option>
+              <option value="elementary">초등학생 (10세 이하)</option>
+              <option value="middle">중학생 (10대 초반)</option>
+              <option value="high">고등학생 및 수능 수험생 (10대 후반)</option>
+              <option value="univ">대학생 및 취업준비생 (20대)</option>
+              <option value="adult">직장인 및 실무 자기계발 (30대~40대)</option>
+              <option value="senior">시니어 재취업 및 평생 교육 (50대 이상)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="region">현재 거주 중이신 거주지 권역</label>
+            <select id="region" required>
+              <option value="">-- 거주 지역을 선택해 주세요 --</option>
+              <option value="seoul">서울특별시 / 경기도 / 인천광역시</option>
+              <option value="chungcheong">대전 / 세종 / 충청북도 / 충청남도</option>
+              <option value="gyeongsang">부산 / 대구 / 울산 / 경상북도 / 경상남도</option>
+              <option value="jeolla">광주 / 전라북도 / 전라남도</option>
+              <option value="gangwon">강원특별자치도</option>
+              <option value="jeju">제주특별자치도</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="subjectType">주요 수강을 원하시는 강의 종류</label>
+            <select id="subjectType" required>
+              <option value="">-- 학습 카테고리를 선택해 주세요 --</option>
+              <option value="school">초중고 교과 기본 내신 및 서술형 대비</option>
+              <option value="sat">대학수학능력시험 전 과목 종합 패키지</option>
+              <option value="cert">공무원, 공인중개사 등 전문 국가 자격증</option>
+              <option value="language">영어 회화, 토익, 제2외국어 어학 마스터</option>
+              <option value="coding">IT 개발, 파이썬 코딩, 인공지능 빅데이터 실무</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="duration">희망 수강 약정 약속 기간</label>
+            <select id="duration" required>
+              <option value="3">3개월 이내 단기 코스</option>
+              <option value="6">6개월 집중 과정</option>
+              <option value="12">12개월 자유 수강 연간 패스</option>
+              <option value="24">24개월 이상 태블릿 결합 프리미엄 패스</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>추가 제공 및 결합 기능 희망 사항 (복수 선택 가능)</label>
+            <div class="checkbox-group">
+              <label class="checkbox-label">
+                <input type="checkbox" id="deviceBundle" value="device"> 전용 태블릿 기기 렌탈 결합
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" id="aiTutor" value="ai"> 실시간 AI 챗봇 튜터 상담 연동
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" id="refundOption" value="refund"> 합격 또는 성적 달성 시 100% 환급 보장
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" id="offlineCombo" value="offline"> 오프라인 현장 강의 월 1회 병행권
+              </label>
+            </div>
+          </div>
+
+          <button type="submit" class="submit-btn">예상 교육 비용 및 혜택 조회하기</button>
+        </form>
+
+        <div id="calcResult" class="calc-result">
+          <h3 id="resultTitle">결과를 계산 중입니다...</h3>
+          <p id="resultText"></p>
+          <div id="benefitTip" class="warning-box" style="margin-top: 15px; margin-bottom: 0;"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="learning-diagnosis">
+      <h2>학습 성향 자가 진단 테스트 및 AI 매칭 알고리즘</h2>
+      <p>
+        개인의 기질과 공부 습관을 정밀하게 진단하지 않은 채 다른 사람이 추천한다는 이유로 무작정 고가의 강의에 가입하면 중도에 학습을 포기하게 되기 쉽습니다. 아래의 간단한 응답을 통해 귀하가 온라인 녹화 강의, 라이브 실시간 중계, 혹은 AI 보조 튜터링 중 어느 쪽에 최적화되어 있는지 점검해 보시기 바랍니다.
+      </p>
+
+      <div class="form-container" style="background-color: #fafaf9;">
+        <div class="form-group">
+          <label>1. 혼자 모니터 앞에 앉았을 때의 집중력 유지 한계 시간은 어떻게 되나요?</label>
+          <div class="checkbox-group" style="grid-template-columns: 1fr;">
+            <label class="checkbox-label"><input type="radio" name="q1" value="A"> 20분 미만, 금방 주의가 산만해지거나 스마트폰을 켜게 된다.</label>
+            <label class="checkbox-label"><input type="radio" name="q1" value="B"> 40분 정도, 중간에 잠깐 기지개를 켜며 적절히 참아낸다.</label>
+            <label class="checkbox-label"><input type="radio" name="q1" value="C"> 1시간 이상, 주변 소음과 관계없이 집중하여 강의를 완청한다.</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>2. 모르는 수학 문제나 개념이 등장했을 때 선호하는 해결 통로는 무엇입니까?</label>
+          <div class="checkbox-group" style="grid-template-columns: 1fr;">
+            <label class="checkbox-label"><input type="radio" name="q2" value="A"> 게시판 질문 작성 후 반나절 이상 기다리는 것은 너무 답답하다, 즉답이 필요하다.</label>
+            <label class="checkbox-label"><input type="radio" name="q2" value="B"> 인강 질의응답 게시판에 글을 정성껏 올려 전문 선생님의 상세 답변을 확인한다.</label>
+            <label class="checkbox-label"><input type="radio" name="q2" value="C"> 해설집이나 관련 유사 문항 해설 영상을 뒤적이며 스스로 끝까지 추적한다.</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>3. 계획을 세워 혼자 실천해 나가는 계획 이행력 수준은 어느 정도입니까?</label>
+          <div class="checkbox-group" style="grid-template-columns: 1fr;">
+            <label class="checkbox-label"><input type="radio" name="q3" value="A"> 작심삼일이 일상이다, 누군가 옆에서 주간 단위로 스케줄을 관리해주어야 움직인다.</label>
+            <label class="checkbox-label"><input type="radio" name="q3" value="B"> 대체적으로 계획을 지키지만, 바쁜 일과가 겹치면 진도가 쉽게 밀려 몰아쳐 수강하곤 한다.</label>
+            <label class="checkbox-label"><input type="radio" name="q3" value="C"> 일별, 주별 분량을 계획표대로 꼼꼼히 완수하며 큰 어려움 없이 진도를 뺀다.</label>
+          </div>
+        </div>
+
+        <button type="button" onclick="diagnoseStyle()" class="submit-btn" style="background-color: var(--accent-color); color: #0f172a;">나의 맞춤형 학습 솔루션 진단 결과 확인</button>
+
+        <div id="diagnosisResult" class="calc-result" style="background-color: var(--soft-rose); margin-top: 25px;">
+          <h3 id="diagTitle">진단 결과 준비 중</h3>
+          <p id="diagText"></p>
+        </div>
+      </div>
+    </section>
+
+    <section id="community-sentiment">
+      <h2>실제 이용자들의 생생한 수강 후기 및 온라인 여론 동향</h2>
+      <p>
+        최신 마케팅성 광고 배너나 조작된 평점에 속지 않기 위해서는 가식 없는 솔직한 소비자 반응을 살펴보는 것이 필요합니다. 각종 대형 온라인 채널 및 교육 카페 등에서 수렴한 실질적인 평가를 요약하여 알기 쉽게 정리해 드립니다.
+      </p>
+
+      <div class="grid-container">
+        <div class="card" style="border-left: 4px solid #3b82f6;">
+          <h3>디시인사이드 학업 수강 평가</h3>
+          <p>
+            대체로 광고가 섞이지 않은 날것의 리뷰가 다수 게재됩니다. 특정 강사의 독특한 입담, 실제 체감되는 학습 난이도, 모바일 전용 앱이 튕기는 현상 등 날카로운 지적이 수시로 업로드됩니다. 수강 전 디시 교육 갤러리 검색을 통하여 수강하려는 브랜드의 장단점 요지를 실시간으로 추적하는 이들이 많습니다.
+          </p>
+        </div>
+
+        <div class="card" style="border-left: 4px solid #059669;">
+          <h3>보배드림 및 펨코 에듀 게시판</h3>
+          <p>
+            보배드림이나 에펨코리아(펨코) 직장인 게시판 등에서는 가성비 중심의 분석이 주로 다루어집니다. 본인이 직접 자비를 들여 결제한 소위 내돈내산 장기 이용 경험담이 상세하게 서술되며, 직장의 고용보험 근로자 카드 환급을 적용받았을 때 실제 가입 가격 및 실질 할인 혜택을 꼼꼼하게 따져 추천하는 분위기입니다.
+          </p>
+        </div>
+
+        <div class="card" style="border-left: 4px solid #db2777;">
+          <h3>인스타그램 및 유튜브 브이로그 여론</h3>
+          <p>
+            시각적 디자인 요소와 감성적인 필기 분위기, 스터디윗미 형식의 장기 라이브 공부 인증을 선호하는 10대와 20대 유저의 후기가 넘쳐납니다. 시각적 가시성이 우수한 태블릿 기기를 어떤 방식으로 증정받고 학습 앱을 어떻게 화면 분할하여 사용하는지 세세한 팁을 얻기에 아주 이상적인 플랫폼입니다.
+          </p>
+        </div>
+      </div>
+
+      <div class="highlight-box" style="margin-top: 30px;">
+        <h3>주의하셔야 할 무분별한 바이럴 광고 필터링 팁</h3>
+        <p>
+          수강 평점 및 가입 권장 내용이 가득한 네이버 블로그 포스팅 중 하단에 소정의 원고료를 지원받아 작성되었다는 표기가 작게 인쇄되어 있는 글은 한 단계 걸러 들을 필요성이 다분합니다. 또한 지나치게 고액의 무료 사은품이나 조건 없는 사은 혜택을 강조하며 즉각적인 전화를 유도하는 전문 대행업체는 해지 시 막대한 중도 위약금을 청구하는 단점이 가려져 있을 위험이 높으므로, 반드시 다이렉트 고객센터 공식 소통 채널을 이용하는 방향이 권장됩니다.
+        </p>
+      </div>
+    </section>
+
+    <section id="faq-section">
+      <h2>인터넷강의 선택에 관한 자주 묻는 질문 (FAQ)</h2>
+      
+      <div class="card" style="margin-bottom: 15px;">
+        <h3>질문: 수강 기간 중 개인 사정으로 중도 해지할 경우 환불은 정상적으로 진행되나요?</h3>
+        <p>
+          답변: 교육기관 규정 및 법적 소비자 환불 지침에 의거하여 이미 수강한 강의 분량을 제외한 나머지 잔여 기간에 대한 환급을 원칙으로 삼습니다. 그러나 주의할 점은 무상으로 제공받았던 태블릿 PC 등의 결합 기기 가격이나 교재 비용이 고액으로 책정되어 반환 수수료 명목으로 공제될 수 있으므로, 등록하시기 전에 이용 계약 조건을 찬찬히 살펴보는 것이 현명합니다.
+        </p>
+      </div>
+
+      <div class="card" style="margin-bottom: 15px;">
+        <h3>질문: 카카오톡이나 텔레그램 등을 이용한 동영상 아이디 공유는 법적 문제가 없나요?</h3>
+        <p>
+          답변: 거의 모든 전문 업체는 이용 약관 상 하나의 계정을 본인 이외의 다인과 함께 사용하는 행위를 엄격히 금지하고 있습니다. 중복 접속을 감지하는 특화 솔루션 앱이 실시간으로 작동하므로, 부정한 공유가 적발되면 사전 고지 없이 수강 자격이 영구 정지될 위험이 있고 법적인 불이익을 받을 수 있으므로 개별 등록을 추천합니다.
+        </p>
+      </div>
+
+      <div class="card" style="margin-bottom: 15px;">
+        <h3>질문: AI 알고리즘이 적용된 어플 프로그램은 정말 실질적 학습 효과가 존재하나요?</h3>
+        <p>
+          답변: 그렇습니다. 최근 뇌 과학 및 맞춤 데이터 분석에 근거한 알고리즘은 사용자가 이전에 반복하여 틀렸던 고난도 수학, 영어 단어 등을 에빙하우스 망각곡선 주기 주기에 밀접하게 맞춤 재배치해 줌으로써 불필요한 반복 학습 과정을 효율적으로 제거해 주는 훌륭한 성과를 증명해 내고 있습니다.
+        </p>
+      </div>
+    </section>
+
+    <section class="external-links">
+      <h2>신뢰할 수 있는 공식 정보 출처 및 추가 학습 정보</h2>
+      <p>아래 공인된 공식 웹사이트들을 통해 최신 트렌드 동향과 유용한 지식 자료를 풍부하게 확보하실 수 있습니다.</p>
+      <a href="https://netxlessonf.koreahankang.com" target="_blank" rel="noopener noreferrer">에듀테크 동향 및 정책 분석 포털</a>
+      <a href="https://namu.wiki/w/%EC%9D%B8%ED%84%B0%EB%84%B7%20%EA%B0%95%EC%9D%98" target="_blank" rel="noopener noreferrer">나무위키 - 대한민국 인터넷 강의 역사 및 개요</a>
+      <a href="https://www.moe.go.kr" target="_blank" rel="noopener noreferrer">대한민국 교육부 공식 웹사이트</a>
+    </section>
+  </main>
+
+
+  <script>
+    function calculateQuote(event) {
+      event.preventDefault();
+      
+      const name = document.getElementById('learnerName').value;
+      const ageGroup = document.getElementById('learnerAge').value;
+      const region = document.getElementById('region').value;
+      const subject = document.getElementById('subjectType').value;
+      const duration = parseInt(document.getElementById('duration').value);
+      
+      const hasDevice = document.getElementById('deviceBundle').checked;
+      const hasAi = document.getElementById('aiTutor').checked;
+      const hasRefund = document.getElementById('refundOption').checked;
+      const hasOffline = document.getElementById('offlineCombo').checked;
+      
+      let baseMonthlyPrice = 0;
+      let targetSubjectName = "";
+      
+      switch (subject) {
+        case "school":
+          baseMonthlyPrice = 120000;
+          targetSubjectName = "초중고 학교 내신 교과 완벽 플랜";
+          break;
+        case "sat":
+          baseMonthlyPrice = 80000; // 프리패스 연간 분할 기준
+          targetSubjectName = "대입 수능 수험 전 영역 프리패스";
+          break;
+        case "cert":
+          baseMonthlyPrice = 150000;
+          targetSubjectName = "공무원 및 공인 전문 자격증 합격 보장반";
+          break;
+        case "language":
+          baseMonthlyPrice = 90000;
+          targetSubjectName = "실전 어학 트레이닝 외국어 코스";
+          break;
+        case "coding":
+          baseMonthlyPrice = 180000;
+          targetSubjectName = "실무 위주 프로그래밍 및 AI 데이터 캠프";
+          break;
+      }
+      
+      let additionalCost = 0;
+      let optionNames = [];
+      
+      if (hasDevice) {
+        additionalCost += 40000;
+        optionNames.push("전용 최신형 태블릿 렌탈 서비스");
+      }
+      if (hasAi) {
+        additionalCost += 15000;
+        optionNames.push("챗지피티 연동 초정밀 피드백 튜터");
+      }
+      if (hasRefund) {
+        additionalCost += 20000; // 보증수수료 등
+        optionNames.push("목표 미달성 시 수강료 환급 보증 안전망");
+      }
+      if (hasOffline) {
+        additionalCost += 80000;
+        optionNames.push("대치/서초 거점 오프라인 모의평가 수강권");
+      }
+      
+      let totalMonthly = baseMonthlyPrice + additionalCost;
+      
+      // 약정 기간별 할인율 적용
+      let discountRate = 0;
+      if (duration === 6) discountRate = 0.05;
+      else if (duration === 12) discountRate = 0.15;
+      else if (duration === 24) discountRate = 0.25;
+      
+      let finalMonthly = Math.round(totalMonthly * (1 - discountRate));
+      let totalAmount = finalMonthly * duration;
+      
+      const resultDiv = document.getElementById('calcResult');
+      const resultTitle = document.getElementById('resultTitle');
+      const resultText = document.getElementById('resultText');
+      const benefitTip = document.getElementById('benefitTip');
+      
+      resultDiv.style.display = 'block';
+      resultTitle.textContent = `${name} 고객님께 딱 맞는 추천 강의와 정밀 가격 예상 리포트`;
+      
+      let innerHTML = `
+        <strong>추천 과정명:</strong> ${targetSubjectName} (${duration}개월 가입 약정)<br>
+        <strong>월 평균 수강 비용:</strong> 약 <strong>${finalMonthly.toLocaleString()}원</strong> (기존 월 ${totalMonthly.toLocaleString()}원에서 ${discountRate * 100}% 특별 할인 적용)<br>
+        <strong>총 예상 견적 금액:</strong> <strong>${totalAmount.toLocaleString()}원</strong> (교재비 별도 구성)<br>
+      `;
+      
+      if (optionNames.length > 0) {
+        innerHTML += `<strong>포함된 맞춤 옵션:</strong> ${optionNames.join(', ')}<br>`;
+      }
+      
+      resultText.innerHTML = innerHTML;
+      
+      let regionBonus = "";
+      if (region === "seoul") {
+        regionBonus = "수도권 무료 오프라인 학습 라운지 1일 이용 쿠폰이 제공됩니다.";
+      } else {
+        regionBonus = "지방 학습 격차 해소 특별 사은 혜택으로 전 교재 배송비 100% 면제 패키지가 다이렉트로 증정됩니다.";
+      }
+      
+      benefitTip.innerHTML = `
+        <strong>2026년 특별 추가 혜택 정보:</strong><br>
+        현재 신규 인터넷 신청 시 모바일 도서 상품권 및 신세계 백화점 상품권 5만 원권 등의 풍성한 가입 이벤트 사은품 수령 기회가 있습니다.<br>
+        또한 토스, 네이버 페이 제휴 신용카드로 다이렉트 자동 이체 등록 시 추가 청구 할인이 매달 누적 적용됩니다.<br>
+        <em>${regionBonus}</em>
+      `;
+      
+      // 결과 영역으로 부드럽게 스크롤 이동
+      resultDiv.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function diagnoseStyle() {
+      const q1Answers = document.getElementsByName('q1');
+      const q2Answers = document.getElementsByName('q2');
+      const q3Answers = document.getElementsByName('q3');
+      
+      let val1 = "", val2 = "", val3 = "";
+      
+      for (const rad of q1Answers) { if (rad.checked) val1 = rad.value; }
+      for (const rad of q2Answers) { if (rad.checked) val2 = rad.value; }
+      for (const rad of q3Answers) { if (rad.checked) val3 = rad.value; }
+      
+      if (!val1 || !val2 || !val3) {
+        alert("세 가지 질문의 보기를 모두 선택해 주시기 바랍니다.");
+        return;
+      }
+      
+      const diagDiv = document.getElementById('diagnosisResult');
+      const diagTitle = document.getElementById('diagTitle');
+      const diagText = document.getElementById('diagText');
+      
+      diagDiv.style.display = 'block';
+      
+      let scoreA = 0, scoreB = 0, scoreC = 0;
+      
+      [val1, val2, val3].forEach(v => {
+        if (v === 'A') scoreA++;
+        else if (v === 'B') scoreB++;
+        else if (v === 'C') scoreC++;
+      });
+      
+      if (scoreA >= 2) {
+        diagTitle.textContent = "진단 결과: 밀착 관리 중심의 AI 상호작용 및 라이브 클래스 최적형";
+        diagText.innerHTML = `
+          귀하는 장시간 혼자서만 일방향 강의 영상을 시청할 때 집중도가 다소 쉽게 흩어지는 경향을 보입니다.<br>
+          스스로를 강제할 수 있는 실시간 줌 라이브 수업, 혹은 챗지피티나 제미나이를 기반으로 매일 미션을 던져주고 즉시 질의에 대답해주는 <strong>AI 밀착형 피드백 코스</strong>를 절대적으로 권장합니다.<br>
+          또한 주간 단위로 진도를 점검해 주는 비대면 관리형 플래너 상담 솔루션이 연계된 패키지 가입이 이탈률을 막는 가장 지름길입니다.
+        `;
+      } else if (scoreC >= 2) {
+        diagTitle.textContent = "진단 결과: 주도성과 끈기가 매우 뛰어난 최고 효율의 무제한 올패스 최적형";
+        diagText.innerHTML = `
+          귀하는 뛰어난 자기 제어 장치와 메타인지를 소유하고 계셔, 굳이 고가의 일대일 감시 튜터링 서비스를 활용하지 않으셔도 훌륭한 과업 성취를 충분히 도달할 수 있습니다.<br>
+          이러한 학습 성향에는 수강료가 가장 합리적인 <strong>전 과목 연간 무제한 프리패스</strong>를 주된 기본 베이스로 깔고, 필요한 취약 단원 위주로 배속 기능을 높여 빠르게 완독해내는 단독 수강 방식이 시간과 자금 측면에서 가장 싼곳을 활용해 고효율을 거두는 정답입니다.
+        `;
+      } else {
+        diagTitle.textContent = "진단 결과: 기초 설계 지원과 피어 그룹 시너지가 조화로운 하이브리드 수강형";
+        diagText.innerHTML = `
+          귀하는 주도적 공부 습관이 양호하게 자리를 잡고 있으나, 특정 난도 높은 슬럼프나 어려운 모의고사 문항이 등장했을 때 다소 진도가 정체되는 약점이 있습니다.<br>
+          기본 이론 과정은 가벼운 인터넷 독학 패스를 시청하시되, 중간 난관을 뛰어넘을 수 있도록 <strong>질의응답 응대율이 우수한 1타 전문 플랫폼</strong> 혹은 온라인 동료 수험생들이 모여 카카오톡 단톡방이나 텔레그램으로 주간 학습 인증 미션을 실천해내는 챌린지식 에듀테크 시스템을 혼용하시는 방법을 권유드립니다.
+        `;
+      }
+      
+      diagDiv.scrollIntoView({ behavior: 'smooth' });
+    }
+  </script>
+  
